@@ -1,4 +1,6 @@
+
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:http/http.dart' as http;
@@ -8,8 +10,7 @@ import 'package:my_app/model/product_model.dart';
 class ProductProvider with ChangeNotifier {
   List<Product> _products = [];
   bool _isLoading = false;
-
-  List<Product> get products => _products;
+List<Product> get products => _products;
   bool get isLoading => _isLoading;
   Future<void> fetchProducts() async{
     _isLoading=true;

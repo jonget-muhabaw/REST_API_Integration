@@ -7,17 +7,17 @@ part of 'product_model.dart';
 // **************************************************************************
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-      name: json['name'] as String,
-      description: json['description'] as String,
-      price: (json['price'] as num).toInt(),
-      category: json['category'] as String,
-      stock: (json['stock'] as num).toInt(),
-      sku: json['sku'] as String,
-      image_url: json['image_url'] as String,
-      rate: Rating.fromJson(json['rate'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
+    name: json['name'] as String,
+    description: json['description'] as String,
+    price: (json['price'] as num).toInt(),
+    category: json['category'] as String,
+    stock: (json['stock'] as num).toInt(),
+    sku: json['sku'] as String,
+    image_url: json['image_url'] as String,
+    rate: json['rate'] != null
+        ? Rating.fromJson(json['rate'] as Map<String, dynamic>)
+        : null);
+        Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,

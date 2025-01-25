@@ -10,7 +10,7 @@ class Product{
   int stock;
   String sku;
   String image_url;
-  Rating rate;
+  Rating? rate;
 Product({
   required this.name,
   required this.description,
@@ -18,8 +18,7 @@ Product({
   required this.category,
   required this.stock,
   required this.sku,
-  required this.image_url,
-  required this.rate
+  required this.image_url, this.rate
 });
 factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
