@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
 import '../providers/product_provider.dart';
 
 class ProductPage extends StatefulWidget {
+  const ProductPage({super.key});
+
   @override
-  _ProductPageState createState() => _ProductPageState();
+  State<ProductPage> createState() => _ProductPageState();
 }
 
 class _ProductPageState extends State<ProductPage> {
@@ -13,7 +16,7 @@ class _ProductPageState extends State<ProductPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+      Provider.of<ProductProvider>(context, listen: false).getProducts();
     });
   }
 
@@ -45,8 +48,9 @@ class _ProductPageState extends State<ProductPage> {
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(16),
                       // leading: Text("product"),
+                      leading: Image.network(product.image),
                       title: Text(
-                        product.name,
+                        product.title,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.green),
                       ),
@@ -60,5 +64,6 @@ class _ProductPageState extends State<ProductPage> {
         ),
       ),
     );
+
   }
 }

@@ -6,31 +6,32 @@ part of 'product_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-    name: json['name'] as String,
-    description: json['description'] as String,
-    price: (json['price'] as num).toInt(),
-    category: json['category'] as String,
-    stock: (json['stock'] as num).toInt(),
-    sku: json['sku'] as String,
-    image_url: json['image_url'] as String,
-    rate: json['rate'] != null
-        ? Rating.fromJson(json['rate'] as Map<String, dynamic>)
-        : null);
-        Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
+ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
+      id: (json['id'] as num).toInt(),
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+      description: json['description'] as String,
+      category: json['category'] as String,
+      image: json['image'] as String,
+      rating: json['rating'] == null
+          ? null
+          : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
       'price': instance.price,
+      'description': instance.description,
       'category': instance.category,
-      'stock': instance.stock,
-      'sku': instance.sku,
-      'image_url': instance.image_url,
-      'rate': instance.rate,
+      'image': instance.image,
+      'rating': instance.rating,
     };
 
 Rating _$RatingFromJson(Map<String, dynamic> json) => Rating(
-      rate: (json['rate'] as num).toInt(),
-      count: (json['count'] as num).toInt(),
+      rate: (json['rate'] as num?)?.toDouble(),
+      count: (json['count'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$RatingToJson(Rating instance) => <String, dynamic>{
